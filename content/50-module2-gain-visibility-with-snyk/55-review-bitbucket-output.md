@@ -1,5 +1,5 @@
 ---
-title: "Review Bitbucket output"
+title: "Review Pipeline Invocation Output"
 chapter: true
 weight: 55
 ---
@@ -7,12 +7,10 @@ weight: 55
 # Overview
 In this section we'll navigate the output from the three scans executed in the Bitbucket Pipeline. Developers and Operations teams that don't want to use the Snyk UI can consume the same results visible from the Bitbucket or ECR integrations directly in the Pipeline execution logs. Each invocation style has its advantages.
 
-## Snyk Code
+## Review Snyk Code SAST Results
 Start by reviewing the top-level bitbucket pipeline run
 
 ![Pipeline Overview](/images/workshop-bb-pipeline-overview.png)
-
-In the first section entitled _Test Application_, we added some lines of code to download the snyk CLI via curl and run `snyk code test`.  We also saved the exit code, which is non-zero when we discover a vulnerability.  Rather than break the build, we store this exit code to permit the pipeline to continue along.  This is an example of a CLI-based invocation of Snyk.
 
 We also enabled debug for additional visibility.  In normal situations, you would only use debug to troubleshoot an issue, and we include that output for a more complete picture.  If we review some of the output, you will see different types of outputs:
 
@@ -50,11 +48,9 @@ This output identifies vulnerabilities, their line numbers, and severity (Medium
 
 The output is also available in JSON format, for those teams that want to perform additional processing with tools such as `jq`.
 
-
 ## Snyk Open Source
 
 Next, let's review the stage named, _Scan open source dependencies._  Here, we utilize a Bitbucket Pipe as an example of an integration with the pipeline tool.  The integration uses Snyk in a container and publishes the results to Bitbucket as a Report artifact as shown below.
-
 
 ![Pipeline Overview](/images/workshop-bb-pipeline-summary.png)
 
@@ -62,7 +58,6 @@ Clicking into the report link shows Snyk results for your pipeline run:
 
 ![Pipeline Overview](/images/workshop-bb-pipeline-report.png)
 
-This type of information is handy for those teams that want to store their results as evidence during a specific pipeline run.
 
 ## Snyk Container
 

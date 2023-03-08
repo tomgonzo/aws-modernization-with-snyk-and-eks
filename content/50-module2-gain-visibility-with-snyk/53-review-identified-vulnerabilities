@@ -14,13 +14,13 @@ Let's start by reviewing the vulnerabilities introduced into the Container from 
 
 TODO: Add Image of Package.json Project with Arrow
 
-The default Issues view shows an Issue Card for each Vulnerability. In the Snyk UI, issues are organized by Snyk's Priority Score, which considers factors such as availability of a fix, exploitability, and others to help you focus on the most important issues. Hovering over each Issue's Priority Score shows what factors influenced the score for that issue.
+The default Issues view shows an Issue Card for each Vulnerability. In the Snyk UI, issues are organized by Snyk's Priority Score, which considers factors such as availability of a fix, exploitability, and others to help you focus on the most important issues. Hover over each Issue's Priority Score to show what factors influenced the score for that issue.
 
 TODO: Add Image of Issue Card with Arrow to Priority Score
 
 ### Step 2 - Filter Snyk Open Source results
-From this view, you can use the filters on the left to narrow down the most urgent issues to fix. Apply the filters for "Critical", "Exploitable", and "Fix Available" to focus your attention on only Exploitable Critical Issues with Fixes Available to start. 
+From this view, the filters on the left help to narrow down the most urgent issues to fix. Apply the filters for "Critical", "Exploitable", and "Fix Available" to focus your attention on Exploitable, Fixable, Critical Severity Issues to start. 
 
 TODO: Image of Applied Filters and Reduction in Issues
 
-With an issue backlog reduced to the most Critical Issues that are actionable, we're ready to start fixing vulnerabilities. In the following chapters you'll experiment various ways to do this with Snyk.
+These capabilities are intended to help teams reduce the issue backlog to the most Critical Issues that are actionable. They can help teams focus initial remediation efforts and build momentum around fixing. 

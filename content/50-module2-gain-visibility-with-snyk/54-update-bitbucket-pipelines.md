@@ -1,14 +1,14 @@
 ---
-title: "Update Bitbucket Pipeline"
+title: "Invoke Snyk in Bitbucket Pipelines"
 chapter: true
 weight: 54
 ---
 
 # Overview
-These same scans can be added to Bitbucket Pipelines by making a few changes to the pipeline definition. You may make the changes directly in the Bitbucket Cloud UI, or via your editor with a `git push` in Cloud9.
+These same scans can be added to Bitbucket Pipelines by making a few changes to the `bitbucket-pipelines.yml` pipeline definition. You may make the changes directly in the Bitbucket Cloud UI, or from Cloud9 with a `git push`.
 
-### Step 1 - Add Snyk scanning of your code
-We start by modifying the file `bitbucket-pipelines.yml` to enable the scan of your code.  Find the section below and uncomment as directed to enable the scanning of your custom code.
+### Step 1 - Add Snyk scanning of Source Code
+To enable SAST Code Analysis in the pipeline, find the section below and uncomment as directed to enable the scan.
 
 ```yaml
 test-app: &test-app
@@ -22,14 +22,14 @@ test-app: &test-app
         # Uncomment the following lines to enable Snyk Scan of code
         # - curl https://static.snyk.io/cli/latest/snyk-linux -o snyk-linux
         # - chmod +x snyk-linux
-        # - set -e
-        # - EXIT_CODE=0
-        # - ./snyk-linux -d code test || EXIT_CODE=$?
+        # - ./snyk-linux -d code test || true
         # - echo $EXIT_CODE
 ```
 
+This is an example of a CLI-based invocation of Snyk. In this section entitled _Test Application_, we download the Snyk CLI via curl and run `snyk code test`. As Snyk will break the build any time issues are found, rather than break the build, we pipe to a boolean `true` to allow the pipeline to continue. 
+
 ### Step 2 - Add Snyk scanning of open source
-Next, uncomment the `scan-app` stage in the pipeline to enable Snyk to Scan for vulnerable Open Source libraries.
+To enable SCA for Application Dependencies, uncomment the `scan-app` stage in the pipeline. Here, we utilize a Bitbucket [Pipe](https://bitbucket.org/product/features/pipelines/integrations) to invoke the scan.  
 
 ```yaml
 pipelines:
@@ -40,9 +40,11 @@ pipelines:
     - <<: *scan-push-image
 ```
 
+The `Pipe` uses a containerized Snyk CLI and supports publishing the results to Bitbucket as a Report artifact. This type of information is handy for teams that want to store Snyk results as evidence for each pipeline run.
+
 ### Step 3 - Add Snyk scanning of open source
 
-Finally, uncomment the section to scan the Container Image after it's built.
+Snyk's Bitbucket Pipe also supports SCA for Container Images. Uncommenting the section below uses the Snyk Pipe to scan the Goof Container Image after it's built.
 
 ```yaml
 scan-push-image: &scan-push-image
