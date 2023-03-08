@@ -1,0 +1,57 @@
+---
+title: "Setup Bitbucket credentials in Cloud9"
+chapter: true
+weight: 43
+---
+
+## Step 2 - Clone Goof into the Cloud9 IDE
+With your new Access Token and Git commands in hand, open a terminal in your Cloud9 environment and enter the following commands to navigate to your base directory and clone the forked repository via HTTPS. 
+
+{{% notice warning %}}
+<p style='text-align: left;'>
+Use the Clone URL and Git Config URL provided by Bitbucket in the previous Step.
+</p>
+{{% /notice %}}
+
+```sh
+cd ~/environment
+git clone https://x-token-auth:REALLYLONGNUMBER@bitbucket.org/marco-morales-snyk/workshop-patterns-library-atlassian-aws.git
+git config user.email SOMENUMBER@bots.bitbucket.org
+cd patterns-library-atlassian-aws
+```
+
+This clones the Bitbucket Repository to your local Cloud9 workspace.
+
+## Step 3: Explore the Goof Repo in Cloud9
+In Cloud9, enter the following command to get you into the base directory and list its contents:
+
+```sh
+ls -l app/goof
+```
+
+The output will look similar to the following:
+
+```sh
+$ ls -l app/goof
+total 356
+-rw-r--r-- 1 marco marco   2155 Mar  1 08:22 app.js
+-rw-r--r-- 1 marco marco    575 Mar  1 08:22 app.json
+-rw-r--r-- 1 marco marco   1402 Mar  1 08:22 db.js
+-rw-r--r-- 1 marco marco    913 Mar  1 08:22 deploy-heroku.md
+-rw-r--r-- 1 marco marco    314 Mar  1 08:22 docker-compose.yml
+-rw-r--r-- 1 marco marco    203 Mar  1 08:22 Dockerfile
+drwxr-xr-x 3 marco marco   4096 Mar  1 08:22 exploits
+-rw-r--r-- 1 marco marco  11357 Mar  1 08:22 LICENSE
+-rw-r--r-- 1 marco marco   1315 Mar  1 08:22 package.json
+-rw-r--r-- 1 marco marco 292415 Mar  1 08:22 package-lock.json
+drwxr-xr-x 5 marco marco   4096 Mar  1 08:22 public
+-rw-r--r-- 1 marco marco   3398 Mar  1 08:22 README.md
+drwxr-xr-x 2 marco marco   4096 Mar  1 08:22 routes
+-rw-r--r-- 1 marco marco    641 Mar  1 08:22 utils.js
+drwxr-xr-x 2 marco marco   4096 Mar  1 08:22 views
+```
+
+This layout is typical for containerized Node.js applications. Some files you'll interact with throughout this workshop are:
+- The Code for Goof at `app.js`, `db.js`, and `utils.js`
+- The Manifest File at `app/goof/package.json` which declares the language specification and open source dependencies
+- The `Dockerfile` that governs how it will be containerized.

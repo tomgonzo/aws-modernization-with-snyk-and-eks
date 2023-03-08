@@ -1,11 +1,11 @@
 ---
-title: "Snyk CLI"
+title: "Set up Snyk CLI in Cloud9"
 chapter: true
 weight: 23
 ---
 
 # Snyk Setup Instructions
-You will need a Snyk account to run scans as defined in the prerequisites for this workshop.
+As defined in the prerequisites for this workshop, you will need a Snyk account to scan for vulnerabilities. In this step you'll prepare your Cloud9 environment by installing the Snyk CLI and authenticating it with your Snyk account.
 
 ## Create Snyk Access Token
 - Visit your Snyk account (Account Settings > API Token section) (https://app.snyk.io/account)

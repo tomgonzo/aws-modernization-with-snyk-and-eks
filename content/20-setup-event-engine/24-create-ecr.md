@@ -1,20 +1,18 @@
 ---
-title: "Create ECR"
+title: "Create ECR Repository"
 chapter: true
-weight: 42 # MODIFY THIS VALUE TO REFLECT THE ORDERING OF THE MODULES IF APPLICABLE
+weight: 24 # MODIFY THIS VALUE TO REFLECT THE ORDERING OF THE MODULES IF APPLICABLE
 ---
 
 # Overview
-Here we create an Amazon Elastic Container Registry for your containers.
+In this workshop, you'll use Bitbucket Pipelines to build and containerize a sample application then push that container image to Amazon ECR. This page will guide you through [creating a repository](https://docs.aws.amazon.com/AmazonECR/latest/userguide/repository-create.html) to store your container images.
 
-## Step 1: Create ECR
-
-Before you can push your images to Amazon ECR, you must [create a repository](https://docs.aws.amazon.com/AmazonECR/latest/userguide/repository-create.html) to store them in. You can create Amazon ECR repositories with the AWS Management Console, or with the AWS CLI and AWS SDKs.
-For this workshop, we will create the repository with the AWS Management Console:
+## Create the ECR Repo from the AWS Console
+Amazon ECR repositories can be created from the AWS Management Console, or with the AWS CLI and AWS SDKs. For this workshop, we will create the repository from the AWS Management Console:
 
 1. Open the Amazon ECR console at https://console.aws.amazon.com/ecr/repositories.
-1. From the navigation bar, choose the Region to create your repository in.
-1. In the navigation pane, choose Repositories.
+1. From the navigation bar, select `us-east-1` as the active Region.
+1. In the ECR navigation pane, choose Repositories.
 1. On the Repositories page, choose Create repository.
 ![Create ECR](/images/aws-ecr-create-repository.png)
 

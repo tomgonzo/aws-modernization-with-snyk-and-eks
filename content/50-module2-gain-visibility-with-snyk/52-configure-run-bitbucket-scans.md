@@ -1,15 +1,14 @@
 ---
-title: "Enable Bitbucket Repository Scanning"
+title: "Configure and Run Bitbucket Scanning"
 chapter: true
-weight: 54
+weight: 52
 ---
 
 # Overview
-In this section, we'll add your Bitbucket repository to Snyk in the same style as we added your Amazon ECR to Snyk.  This gives your entire team visibility into the status of your repository.
+Another option to Gain Visibility over security risks without interrupting developer workflows is to use Snyk's Bitbucket Integration. In this section, you'll add your Bitbucket repository in the same way as you added your Container Image from Amazon ECR. Connecting directly to the repository also enables other benefits we'll cover in later modules.
 
 ## Step 1: Enable the Bitbucket Cloud integration
-
-Navigate to your Snyk organization and find the Bitbucket Cloud integration.  In the image below, we filtered the integration list for `bitbucket` to find the Bitbucket Cloud App
+To begin, navigate back to the Integrations Page and find the Bitbucket Cloud integration.  In the image below, we filtered the integration list for `bitbucket` to find the Bitbucket Cloud App.
 
 ![Snyk Bitbucket Cloud integration](../images/snyk-atlassian-integration.png)
 
