@@ -5,12 +5,9 @@ weight: 55
 ---
 
 # Overview
-In this section we'll navigate the output from your three scans as they would appear in a Bitbucket Pipeline.
-
-This output closely matches what you would see in any modern CI/CD pipeline solution, because all will run Snyk scans either from a command-line or from a container.  Snyk provides a number of integrations in popular CI/CD solutions to make the process easier, and also supports direct invocation of bash scripts.  Each style has its advantages.
+In this section we'll navigate the output from the three scans executed in the Bitbucket Pipeline. Developers and Operations teams that don't want to use the Snyk UI can consume the same results visible from the Bitbucket or ECR integrations directly in the Pipeline execution logs. Each invocation style has its advantages.
 
 ## Snyk Code
-
 Start by reviewing the top-level bitbucket pipeline run
 
 ![Pipeline Overview](/images/workshop-bb-pipeline-overview.png)
@@ -80,7 +77,4 @@ _Note: at the time of this workshop, the File reference appears broken._
 ![Pipeline Overview](/images/workshop-bb-pipeline-report-2.png)
 
 This is one of several ways to see the details.  In later sections, we'll show how your team may use the same information in other places for their daily workflow.
-
-## Next steps
-In the next section, we'll enable some integrations directly within Snyk.
 

@@ -5,12 +5,9 @@ weight: 54
 ---
 
 # Overview
-These same scans can be added to Bitbucket Pipelines by making a few changes to the pipeline definition. 
-
-You may make the changes directly in your Bitbucket Cloud UI, or via your editor with a `git push` in Cloud9.
+These same scans can be added to Bitbucket Pipelines by making a few changes to the pipeline definition. You may make the changes directly in the Bitbucket Cloud UI, or via your editor with a `git push` in Cloud9.
 
 ### Step 1 - Add Snyk scanning of your code
-
 We start by modifying the file `bitbucket-pipelines.yml` to enable the scan of your code.  Find the section below and uncomment as directed to enable the scanning of your custom code.
 
 ```yaml
@@ -32,32 +29,20 @@ test-app: &test-app
 ```
 
 ### Step 2 - Add Snyk scanning of open source
-Next, let's uncomment that block to enable Snyk Scans of open Source for the libraries your team uses.
+Next, uncomment the `scan-app` stage in the pipeline to enable Snyk to Scan for vulnerable Open Source libraries.
 
 ```yaml
-scan-app: &scan-app
-  - step:
-      name: "Scan open source dependencies"
-      caches:
-        - node
-      script:
-        - echo "Scan open source Dependencies"
-        # Uncomment the following lines to enable Snyk Open Source Scanning
-        # - pipe: snyk/snyk-scan:0.5.3
-        #   variables:
-        #     SNYK_TOKEN: $SNYK_TOKEN
-        #     LANGUAGE: "npm"
-        #     PROJECT_FOLDER: "app/goof"
-        #     TARGET_FILE: "package.json"
-        #     CODE_INSIGHTS_RESULTS: "true"
-        #     SEVERITY_THRESHOLD: "high"
-        #     DONT_BREAK_BUILD: "true"
-        #     MONITOR: "false"
+pipelines:
+  default:
+    - <<: *test-app
+    # Uncomment this line to enable the scanning of the application.
+    # - <<: *scan-app
+    - <<: *scan-push-image
 ```
 
 ### Step 3 - Add Snyk scanning of open source
 
-Finally, uncomment the section to scan dockerfile defintions.
+Finally, uncomment the section to scan the Container Image after it's built.
 
 ```yaml
 scan-push-image: &scan-push-image
@@ -83,7 +68,6 @@ scan-push-image: &scan-push-image
       #      MONITOR: "false"
 ...
 ```
-
 
 ## Step 4: Commit and build
 
